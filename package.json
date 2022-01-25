@@ -1,6 +1,10 @@
 {
+  "name": "budget-server",
+  "version": "0.0.1",
+  "main": "server.js",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv":"^14.2.0",
     "express": "^4.17.2"
   }
 }
