@@ -2,7 +2,7 @@ const express = require("express");
 const { response } = require("../app");
 const app = require("../app");
 
-const transArray = require(".../models/transactions").sort((a, b)=>{
+const transArray = require("../models/transactions").sort((a, b)=>{
     return a.date < b.date ? 1: a.date > b.date ? -1 : 0;
 });
 
@@ -27,7 +27,7 @@ budgeting.get("/:id", (request, response)=>{
 budgeting.post("/", (request, response)=> {
     console.log("Post request");
     transArray.push(request.body);
-    response.status(201).json(transArray);
+    response.status(201).json(transArray[transArray.length -1]);
 });
 
 budgeting.delete("/:id", (request, response) => {
@@ -43,7 +43,7 @@ budgeting.put("/:id", (request, response) => {
     console.log(`Put request for id: ${id}`);
     if (transArray[id]) {
       transArray[id] = request.body;
-      response.status(200).json(transArray);
+      response.status(200).json(transArray[id]);
     } else {
       response.status(404).json({ error: "index not found" });
     }
